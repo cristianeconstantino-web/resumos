@@ -152,4 +152,66 @@
         <a class="disc" href="resumos/contabilidade-publica.html"><span class="dot" style="background:#4fb286"></span>Contabilidade Pública</a>
         <a class="disc" href="resumos/contabilidade-custos.html"><span class="dot" style="background:#4fb286"></span>Contabilidade de Custos</a>
         <a class="disc" href="resumos/contabilidade-avancada.html"><span class="dot" style="background:#4fb286"></span>Contabilidade Avançada</a>
-        <a class="disc"
+        <a class="disc" href="resumos/auditoria.html"><span class="dot" style="background:#4fb286"></span>Auditoria</a>
+      </div>
+    </div>
+
+    <div class="grupo" data-grupo>
+      <div class="grupo-head"><span class="dot" style="background:#e0b64f"></span><h2>Economia e finanças públicas</h2><span>2</span></div>
+      <div class="grid">
+        <a class="disc" href="resumos/economia.html"><span class="dot" style="background:#e0b64f"></span>Economia</a>
+        <a class="disc" href="resumos/financas-publicas.html"><span class="dot" style="background:#e0b64f"></span>Finanças Públicas</a>
+      </div>
+    </div>
+
+    <div class="grupo" data-grupo>
+      <div class="grupo-head"><span class="dot" style="background:#6d8dfd"></span><h2>Exatas e lógica</h2><span>3</span></div>
+      <div class="grid">
+        <a class="disc" href="resumos/matematica-financeira.html"><span class="dot" style="background:#6d8dfd"></span>Matemática Financeira</a>
+        <a class="disc" href="resumos/estatistica.html"><span class="dot" style="background:#6d8dfd"></span>Estatística</a>
+        <a class="disc" href="resumos/raciocinio-logico.html"><span class="dot" style="background:#6d8dfd"></span>Raciocínio Lógico</a>
+      </div>
+    </div>
+
+    <div class="grupo" data-grupo>
+      <div class="grupo-head"><span class="dot" style="background:#b183e0"></span><h2>Gestão e tecnologia</h2><span>3</span></div>
+      <div class="grid">
+        <a class="disc" href="resumos/administracao-governanca-publica.html"><span class="dot" style="background:#b183e0"></span>Administração e Governança Pública</a>
+        <a class="disc" href="resumos/tecnologia-informacao.html"><span class="dot" style="background:#b183e0"></span>Tecnologia da Informação</a>
+        <a class="disc" href="resumos/fluencia-dados.html"><span class="dot" style="background:#b183e0"></span>Fluência de Dados</a>
+      </div>
+    </div>
+
+    <div class="grupo" data-grupo>
+      <div class="grupo-head"><span class="dot" style="background:#7d8494"></span><h2>Português</h2><span>1</span></div>
+      <div class="grid">
+        <a class="disc" href="resumos/lingua-portuguesa.html"><span class="dot" style="background:#7d8494"></span>Língua Portuguesa</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span id="contador">23 matérias</span>
+    <span>Reverso Academy</span>
+  </footer>
+</div>
+
+<script>
+function filtrar(termo) {
+  termo = termo.toLowerCase();
+  let visiveis = 0;
+  document.querySelectorAll('[data-grupo]').forEach(grupo => {
+    let algumVisivel = false;
+    grupo.querySelectorAll('.disc').forEach(a => {
+      const match = a.textContent.toLowerCase().includes(termo);
+      a.style.display = match ? '' : 'none';
+      if (match) { algumVisivel = true; visiveis++; }
+    });
+    grupo.style.display = algumVisivel ? '' : 'none';
+  });
+  document.getElementById('contador').textContent = visiveis + ' matéria(s)';
+}
+</script>
+</body>
+</html>
