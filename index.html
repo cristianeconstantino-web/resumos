@@ -4,159 +4,152 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resumos de Estudo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f1115;
-    --card: #171a21;
-    --border: #262b36;
-    --text: #e8e9ec;
-    --muted: #9aa1ae;
-    --accent: #4f8cff;
+    --bg: #0b0d12;
+    --surface: #14171f;
+    --surface-hover: #1b1f2a;
+    --border: #232833;
+    --text: #eef0f4;
+    --muted: #7d8494;
+    --accent: #6d8dfd;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    padding: 40px 20px;
+    font-family: 'Inter', -apple-system, sans-serif;
+    padding: 60px 24px;
+    line-height: 1.5;
   }
-  .container { max-width: 720px; margin: 0 auto; }
-  header { margin-bottom: 30px; }
-  header h1 { font-size: 1.8rem; margin-bottom: 6px; }
-  header p { color: var(--muted); font-size: 0.95rem; }
+  .container { max-width: 760px; margin: 0 auto; }
 
-  .search {
-    width: 100%;
-    padding: 10px 14px;
-    margin-bottom: 28px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-size: 0.95rem;
-  }
-  .search:focus { outline: none; border-color: var(--accent); }
-
-  .grupo { margin-bottom: 26px; }
-  .grupo h2 {
-    font-size: 0.8rem;
+  header { margin-bottom: 36px; }
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
     color: var(--accent);
     margin-bottom: 10px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--border);
-  }
-  .list { list-style: none; }
-  .list li { margin-bottom: 8px; }
-  .list a {
     display: block;
-    padding: 12px 16px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: border-color 0.15s, transform 0.1s;
   }
-  .list a:hover { border-color: var(--accent); transform: translateX(2px); }
-  .list a::before { content: "📄 "; }
+  header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  header p { color: var(--muted); font-size: 0.95rem; }
 
-  footer { margin-top: 40px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+  .search-wrap { position: relative; margin: 32px 0 40px; }
+  .search-wrap svg {
+    position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+    width: 16px; height: 16px; stroke: var(--muted);
+  }
+  .search {
+    width: 100%;
+    padding: 13px 16px 13px 42px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.9rem;
+  }
+  .search::placeholder { color: var(--muted); }
+  .search:focus { outline: none; border-color: var(--accent); }
+
+  .grupo { margin-bottom: 32px; }
+  .grupo-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .grupo-head h2 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+  .grupo-head span {
+    font-size: 0.72rem;
+    color: var(--muted);
+    opacity: 0.6;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 8px;
+  }
+  .disc {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.87rem;
+    font-weight: 500;
+    transition: background 0.12s, border-color 0.12s;
+  }
+  .disc:hover { background: var(--surface-hover); border-color: var(--accent); }
+  .disc .dot { opacity: 0.7; }
+
+  footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+  }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
-    <h1>📚 Resumos de Estudo</h1>
+    <span class="eyebrow">Concursos fiscais</span>
+    <h1>Resumos de estudo</h1>
     <p>Organizado por área de conhecimento</p>
   </header>
 
-  <input type="text" class="search" placeholder="🔍 Buscar matéria..." oninput="filtrar(this.value)">
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="text" class="search" placeholder="Buscar matéria..." oninput="filtrar(this.value)">
+  </div>
 
   <div id="conteudo">
 
     <div class="grupo" data-grupo>
-      <h2>⚖️ Direito</h2>
-      <ul class="list">
-        <li><a href="resumos/direito-constitucional.html">Direito Constitucional</a></li>
-        <li><a href="resumos/direito-administrativo.html">Direito Administrativo</a></li>
-        <li><a href="resumos/direito-civil.html">Direito Civil</a></li>
-        <li><a href="resumos/direito-penal.html">Direito Penal</a></li>
-        <li><a href="resumos/direito-empresarial.html">Direito Empresarial</a></li>
-        <li><a href="resumos/direito-financeiro.html">Direito Financeiro</a></li>
-        <li><a href="resumos/direito-tributario.html">Direito Tributário</a></li>
-        <li><a href="resumos/legislacao-tributaria-estadual.html">Legislação Tributária Estadual</a></li>
-        <li><a href="resumos/reforma-tributaria.html">Reforma Tributária</a></li>
-      </ul>
+      <div class="grupo-head"><span class="dot" style="background:#e2725b"></span><h2>Direito</h2><span>9</span></div>
+      <div class="grid">
+        <a class="disc" href="resumos/direito-constitucional.html"><span class="dot" style="background:#e2725b"></span>Direito Constitucional</a>
+        <a class="disc" href="resumos/direito-administrativo.html"><span class="dot" style="background:#e2725b"></span>Direito Administrativo</a>
+        <a class="disc" href="resumos/direito-civil.html"><span class="dot" style="background:#e2725b"></span>Direito Civil</a>
+        <a class="disc" href="resumos/direito-penal.html"><span class="dot" style="background:#e2725b"></span>Direito Penal</a>
+        <a class="disc" href="resumos/direito-empresarial.html"><span class="dot" style="background:#e2725b"></span>Direito Empresarial</a>
+        <a class="disc" href="resumos/direito-financeiro.html"><span class="dot" style="background:#e2725b"></span>Direito Financeiro</a>
+        <a class="disc" href="resumos/direito-tributario.html"><span class="dot" style="background:#e2725b"></span>Direito Tributário</a>
+        <a class="disc" href="resumos/legislacao-tributaria-estadual.html"><span class="dot" style="background:#e2725b"></span>Legislação Tributária Estadual</a>
+        <a class="disc" href="resumos/reforma-tributaria.html"><span class="dot" style="background:#e2725b"></span>Reforma Tributária</a>
+      </div>
     </div>
 
     <div class="grupo" data-grupo>
-      <h2>📊 Contabilidade</h2>
-      <ul class="list">
-        <li><a href="resumos/contabilidade-geral.html">Contabilidade Geral</a></li>
-        <li><a href="resumos/contabilidade-publica.html">Contabilidade Pública</a></li>
-        <li><a href="resumos/contabilidade-custos.html">Contabilidade de Custos</a></li>
-        <li><a href="resumos/contabilidade-avancada.html">Contabilidade Avançada</a></li>
-        <li><a href="resumos/auditoria.html">Auditoria</a></li>
-      </ul>
-    </div>
-
-    <div class="grupo" data-grupo>
-      <h2>💰 Economia e Finanças Públicas</h2>
-      <ul class="list">
-        <li><a href="resumos/economia.html">Economia</a></li>
-        <li><a href="resumos/financas-publicas.html">Finanças Públicas</a></li>
-      </ul>
-    </div>
-
-    <div class="grupo" data-grupo>
-      <h2>🔢 Exatas e Lógica</h2>
-      <ul class="list">
-        <li><a href="resumos/matematica-financeira.html">Matemática Financeira</a></li>
-        <li><a href="resumos/estatistica.html">Estatística</a></li>
-        <li><a href="resumos/raciocinio-logico.html">Raciocínio Lógico</a></li>
-      </ul>
-    </div>
-
-    <div class="grupo" data-grupo>
-      <h2>🏛️ Gestão e Tecnologia</h2>
-      <ul class="list">
-        <li><a href="resumos/administracao-governanca-publica.html">Administração e Governança Pública</a></li>
-        <li><a href="resumos/tecnologia-informacao.html">Tecnologia da Informação</a></li>
-        <li><a href="resumos/fluencia-dados.html">Fluência de Dados</a></li>
-      </ul>
-    </div>
-
-    <div class="grupo" data-grupo>
-      <h2>📝 Português</h2>
-      <ul class="list">
-        <li><a href="resumos/lingua-portuguesa.html">Língua Portuguesa</a></li>
-      </ul>
-    </div>
-
-  </div>
-
-  <footer id="contador"></footer>
-</div>
-
-<script>
-function filtrar(termo) {
-  termo = termo.toLowerCase();
-  let visiveis = 0;
-  document.querySelectorAll('[data-grupo]').forEach(grupo => {
-    let algumVisivel = false;
-    grupo.querySelectorAll('li').forEach(li => {
-      const match = li.textContent.toLowerCase().includes(termo);
-      li.style.display = match ? '' : 'none';
-      if (match) { algumVisivel = true; visiveis++; }
-    });
-    grupo.style.display = algumVisivel ? '' : 'none';
-  });
-  document.getElementById('contador').textContent = visiveis + ' matéria(s)';
-}
-filtrar('');
-</script>
-</body>
-</html>
+      <div class="grupo-head"><span class="dot" style="background:#4fb286"></span><h2>Contabilidade</h2><span>5</span></div>
+      <div class="grid">
+        <a class="disc" href="resumos/contabilidade-geral.html"><span class="dot" style="background:#4fb286"></span>Contabilidade Geral</a>
+        <a class="disc" href="resumos/contabilidade-publica.html"><span class="dot" style="background:#4fb286"></span>Contabilidade Pública</a>
+        <a class="disc" href="resumos/contabilidade-custos.html"><span class="dot" style="background:#4fb286"></span>Contabilidade de Custos</a>
+        <a class="disc" href="resumos/contabilidade-avancada.html"><span class="dot" style="background:#4fb286"></span>Contabilidade Avançada</a>
+        <a class="disc"
